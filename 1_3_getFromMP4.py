@@ -11,7 +11,7 @@ while isOK:
     isOK, frame = cam.read()
     if isOK:
         cv2.imshow("video frame", frame)
-        cv2.waitKey(1) 
+        cv2.waitKey(10) 
 
 
 """

@@ -16,8 +16,8 @@ edges = cv2.Canny(frame,100,200) # This uses the canny edge detector. The 100 an
 
 
 # Load another heart from a template
-heart = cv2.imread("heart.png")
-heartCanny = cv2.Canny(heart,100,200)
+heart = cv2.imread("pentagon.png")
+heartCanny = cv2.Canny(heart,150,200)
 heartContours, hierarchy = cv2.findContours(heartCanny,cv2.RETR_LIST,cv2.CHAIN_APPROX_NONE)
 
 heartBlank = np.zeros(heart.shape)
@@ -39,7 +39,7 @@ for contour in contours:
         contourMoments = cv2.moments(contour)
         contourHuMoments = cv2.HuMoments(contourMoments)
         delta = np.sum(heartHuMoments-contourHuMoments)
-        if (np.abs(delta)<0.002):
+        if (np.abs(delta)<0.0002):
             print(np.abs(delta))
             goodContours.append(contour)
             cv2.polylines(blankImage,contour,True,(255),1)
